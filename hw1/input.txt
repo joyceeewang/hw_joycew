@@ -1,0 +1,7 @@
+20
+BUILD 2 6 green
+BUILD 7 9 red
+EXTEND 7 6 blue 
+EXTEND 7 3 yellow
+DEMOLISH 7
+SKYLINE 11
