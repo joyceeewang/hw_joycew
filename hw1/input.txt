@@ -3,5 +3,4 @@ BUILD 1 4 blue
 BUILD 3 5 red
 BUILD 5 6 yellow
 EXTEND 1 1 green
-DEMOLISH 3
 SKYLINE   4
