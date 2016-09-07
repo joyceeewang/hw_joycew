@@ -40,14 +40,17 @@ int main(int argc, char* argv[])
 		  	ss >> x; 
 		  	ss >> y; 
 		 	ss >> c; 
+		 	x=x-1; // 0
 		  	if (ss.fail() || skyline[x] != NULL) {
 		  		cout << ss.fail() << endl;
-		  		cout << x << " " << y << " " << c << endl;  
+		  		//cout << x << " " << y << " " << c << endl;  
 			  	output << "Error - incorrect command" << endl;
 		  	}
-		  	else if(x<0 || x>=constructionspots || y<0){
-		  		output << "Error - incorrect command ha" << endl; // check if falls in limit
+		  	else if(x<0 || x>=constructionspots || y<0){ // check if falls in limit
+		  		output << "Error - incorrect command ha" << endl; 
 		  	} 
+		  	// else if(check if color is not wrong input)
+		  	// else if(check if all numbers are integers)
 		  	else {
 		     	buildingheights[x] = y;  
 				skyline[x] = new string[y]; 
@@ -56,18 +59,19 @@ int main(int argc, char* argv[])
 		     	} 
 		  	}
 	  	}
-	  	else if (curr == "EXTEND") {
+	  	else if (curr == "EXTEND") { //extending the height by 0???
 	  	  	int x,y; 
 	  	  	string c; 
 	  	  	ss >> x; 
 	  	  	ss >> y; 
 		  	ss >> c; 
-		  	if(skyline[x] == NULL){
+		  	x=x-1;
+		  	if(ss.fail() || skyline[x] == NULL){
 		  		output << "Error - incorrect command" << endl;
 		  	}
 		  	else{
-		  		int currheight = buildingheights[x];
-		  		int newheight = currheight + y; //9+6=15 
+		  		int currheight = buildingheights[x]; 
+		  		int newheight = currheight + y; 
 
 		  		string *temp;
 		  		temp = new string[currheight]; 
@@ -75,29 +79,28 @@ int main(int argc, char* argv[])
 		  			temp[i] = skyline[x][i]; 
 		  		} 
 				
+				delete [] skyline[x];
+				skyline[x] = NULL;  
+				
 				skyline[x] = new string[newheight]; 
 		     	for(int i=0; i<currheight; i++){
 		     		skyline[x][i] = temp[i];
 		     	}
 		     	
-		     	// delete temp
-		     		  		 
-		  		for(int i=buildingheights[x]; i<newheight; i++){
-		     		skyline[x][i] = c; //=blue
+		     	delete [] temp; 
+  			 	temp = NULL; 
+  			 	  		 
+		  		for(int i=currheight; i<newheight; i++){ 
+		     		skyline[x][i] = c; 
 		     	}	 
-		     	
-		     	/*for(int i=0; i<newheight; i++){ //printing out
-		     		cout << skyline[x][i] << " "; 
-		     	}
-		     	cout << endl; */
-		     	
-		     	buildingheights[x] = newheight; //=15
+		     	buildingheights[x] = newheight; 
 		  	}
 	  	}
 		else if (curr == "DEMOLISH") {
 	  	  	int x; // spot
 	  	  	ss >> x; 
-	  	  	if(buildingheights[x] == 0){
+	  	  	x=x-1; 
+	  	  	if(ss.fail() || buildingheights[x] == 0){
 	  	  	   output << "Error - incorrect command" << endl;
 	  	  	}
 	  	   else{ 
@@ -109,13 +112,13 @@ int main(int argc, char* argv[])
 	  	else if (curr == "SKYLINE") {
 	  		int y; 
 	   	ss >> y; // height
-	  	   if(y<1){
+	  	   if(ss.fail() || y<1){
 	  	   	output << "Error - incorrect command" << endl; 
 	  	   }
-	  	   else {
-	  	  		for(int i=1; i<=constructionspots; i++){
+	  	   else { 
+	  	  		for(int i=0; i<constructionspots; i++){
 	  	  			if(buildingheights[i] >= y){ 
-	  	        		output << skyline[i][y] << " " << endl;
+	  	        		output << skyline[i][y-1] << " " << endl;
 	  	        	}
 	  	        	else{
 	  	        		output << "SKY " << endl;
