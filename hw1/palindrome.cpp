@@ -39,7 +39,7 @@ bool helper (stringstream &input, int len)
 
 //do not change the main function.
 int main (int argc, char* argv[])
-{
+{ 
   if(argc < 2){
     cerr << "Please provide a string of characters." << endl;
     return 1;
