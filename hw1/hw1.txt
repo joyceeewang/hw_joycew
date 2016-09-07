@@ -1,5 +1,5 @@
 PROBLEM 1
-Part (a) 1,4,5,8
+Part (a) 1,4,8
 Part (b) all
 Part (c) 2
 Part (d) 2
