@@ -130,7 +130,7 @@ int main(int argc, char* argv[])
 	  	else {
 			output << "Error - incorrect command" << endl;  
 		}
-  	}
+  	} 
   	
   	input.close(); 
   	
