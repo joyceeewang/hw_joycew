@@ -1,7 +1,2 @@
-blue 
-SKY 
-SKY 
-SKY 
-yellow 
-
+blue SKY red SKY yellow 
 
