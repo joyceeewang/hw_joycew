@@ -118,10 +118,10 @@ int main(int argc, char* argv[])
 	  	   else { 
 	  	  		for(int i=0; i<constructionspots; i++){
 	  	  			if(buildingheights[i] >= y){ 
-	  	        		output << skyline[i][y-1] << " " << endl;
+	  	        		output << skyline[i][y-1] << " ";
 	  	        	}
 	  	        	else{
-	  	        		output << "SKY " << endl;
+	  	        		output << "SKY ";
 	  	        	}
 		   	}
 		   	output << "\n" << endl;  
